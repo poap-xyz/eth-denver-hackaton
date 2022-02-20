@@ -15,7 +15,7 @@ import { ConfigModule } from '@nestjs/config';
     ReactionModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: '10.0.0.150',
+      host: 'localhost',
       port: 3306,
       username: 'root',
       password: 'CarGGIEpXh',
@@ -23,6 +23,6 @@ import { ConfigModule } from '@nestjs/config';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-  ]
+  ],
 })
-export class AppModule { }
+export class AppModule {};

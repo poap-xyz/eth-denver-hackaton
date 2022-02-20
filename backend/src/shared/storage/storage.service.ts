@@ -1,13 +1,12 @@
 import { StorageInterface } from '../contracts/storage.interface';
 import { Inject, Injectable } from '@nestjs/common';
-import { NFT_STORAGE_CLIENT_TOKEN } from './storage.tokens';
 import { NFTStorage, File } from 'nft.storage';
 import { StoreDataDto } from './dto/store-data.dto';
 
 @Injectable()
 export class StorageService implements StorageInterface {
   constructor(
-    @Inject(NFT_STORAGE_CLIENT_TOKEN)
+    @Inject('NFT_STORAGE_CLIENT_TOKEN')
     private readonly nftStorageClient: NFTStorage,
   ) {}
 
