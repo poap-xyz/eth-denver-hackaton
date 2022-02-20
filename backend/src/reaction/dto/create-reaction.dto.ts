@@ -6,9 +6,6 @@ export class CreateReactionDto {
     @IsEthereumAddress()
     address: string;
 
-    @IsNotEmpty()
-    post_id: number;
-
     @IsOptional()
     vote: VOTE
 }
