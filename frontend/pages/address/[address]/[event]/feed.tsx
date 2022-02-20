@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import { useRouter } from "next/router";
 import Link from 'next/link'
 import type { NextPage } from "next";
 
 import styles from "./Feed.module.scss";
-import internal from "stream";
+import {getEvent, getPostsByEventId} from "../../../../utils/api";
+import axios from "axios";
 
 type Comment = {
-  id: string 
+  id: string
   author: string
   image: string
   message: string
@@ -26,33 +27,90 @@ const LikeIcon = () => {
 }
 
 const Feed: NextPage = () => {
-  const [feed, setFeed] = useState([
-    { 
-      id: '1', 
+  const [eventInfo, setEventInfo] = useState(null);
+  const [posts, setPosts] = useState([]);
+  const [eventId, setEventId] = useState<string | undefined | string[]>(undefined);
+  const [feed, setFeed] = useState<any[]>([
+    {
+      id: '1',
       author: 'Pepito.eth',
       image: 'https://via.placeholder.com/600x400',
-      message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 
+      message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
       likes: 0,
       dislikes: 10,
     },
-    { 
-      id: '2', 
+    {
+      id: '2',
       author: 'lelele.eth',
       image: 'https://via.placeholder.com/1200x600',
-      message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. ', 
+      message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. ',
       likes: 1313,
       dislikes: 1,
     },
-    { 
-      id: '3', 
+    {
+      id: '3',
       author: 'sasasa.eth',
       image: 'https://via.placeholder.com/600x200',
-      message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. ', 
+      message: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. ',
       likes: 3,
       dislikes: 0,
     },
   ]);
+
+
   const router = useRouter();
+  const {address, event: eventIdRouter} = router.query;
+
+  useEffect(() => {
+    setEventId(eventIdRouter);
+  });
+
+  useEffect(() => {
+    if(!eventId) {
+      return;
+    }
+
+    fetchEvent(eventId).then();
+  }, [eventId]);
+
+  const fetchEvent = async (eventId: any) => {
+    const event = await getEvent({eventId});
+    setEventInfo(event);
+  }
+
+  useEffect(() => {
+    if(!eventInfo) {
+      return;
+    }
+
+    fetchPosts(eventId).then();
+  }, [eventInfo]);
+
+  const fetchPosts = async (eventId: any) => {
+    const posts = await getPostsByEventId({eventId});
+      console.log(posts);
+
+      const promises = posts.map(async (post: any) => {
+          const ipfs = `https://ipfs.io/ipfs/${post.urlIPFS.split('/')[2]}/metadata.json`;
+          const lamierdadeipfs = await axios.get(ipfs);
+          const data = await lamierdadeipfs.data;
+          const url = data.image;
+          const urlPosta = `https://ipfs.io/ipfs/${url.split('/')[2]}/blob`;
+
+          return {
+              id: post._id,
+              author: post.accountId,
+              image: urlPosta,
+              message: post.description,
+              likes: post.reactions.filter((reaction: any) => reaction.vote > 0).length,
+              dislikes: post.reactions.filter((reaction: any) => reaction.vote < 0).length,
+          }
+      });
+
+      const asd = await Promise.all(promises);
+
+      setFeed(asd);
+  }
 
   const handleLike = (comment: Comment) => {
     console.log('Like', comment)
@@ -60,9 +118,7 @@ const Feed: NextPage = () => {
 
   const handleDislike = (comment: Comment) => {
     console.log('Dislike', comment)
-  }
-
-  const { address, event } = router.query;
+}
 
   return (
     <div className={styles.page}>
@@ -82,11 +138,11 @@ const Feed: NextPage = () => {
       <div className={styles.feed}>
         <div className={styles.title}>
           <h2>Feed</h2>
-          <Link href={`/address/${address}/${event}/create`}>
+          <Link href={`/address/${address}/${eventId}/create`}>
             <a className={styles.button}>New Comment</a>
           </Link>
         </div>
-        { 
+        {
           feed.map( comment => {
             return (
               <div className={styles.itemFeed}>
@@ -99,7 +155,7 @@ const Feed: NextPage = () => {
                       <div className={styles.like}>
                         <span className={styles.counter}>
                           {comment.likes}
-                        </span> 
+                        </span>
                         <div onClick={() => handleLike(comment)}>
                           <LikeIcon />
                         </div>
@@ -107,7 +163,7 @@ const Feed: NextPage = () => {
                       <div className={styles.dislike}>
                         <span className={styles.counter}>
                           {comment.dislikes}
-                        </span> 
+                        </span>
                         <div onClick={() => handleDislike(comment)}>
                           <LikeIcon />
                         </div>
