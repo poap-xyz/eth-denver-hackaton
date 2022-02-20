@@ -1,26 +1,22 @@
-import { Controller, Post, Body } from '@nestjs/common';
-import {UsersService, LoginService} from './accounts.service';
+import { Controller, Post, Body, BadRequestException } from '@nestjs/common';
 import { LoginDto } from './dto/login.dto';
-import {ethers} from "ethers";
-import {log} from "util";
+import { AuthService } from './services/auth.service';
+import { ERRORS } from './accounts.constants';
 
 @Controller('accounts')
 export class LoginController {
-  constructor(
-      private readonly loginService: LoginService,
-  ) {}
+  constructor(private readonly authService: AuthService) {}
 
   @Post('/login')
   async login(@Body() loginDto: LoginDto) {
     // Log in the user
-    const user = this.loginService.login(loginDto);
+    const user = await this.authService.validateUser(loginDto);
 
     // If the user is null, the service couldn't log in
-    if(!user) {
-      // Return error
-      return
+    if (!user) {
+      // throw error
+      throw new BadRequestException(ERRORS.invalidCredentialsError);
     }
-
+    return this.authService.login(user);
   }
-
 }

@@ -1,13 +1,20 @@
-import {IsEthereumAddress, IsHexadecimal, IsString} from "class-validator";
+import {
+  IsEthereumAddress,
+  IsHexadecimal,
+  IsNotEmpty,
+  IsString,
+} from 'class-validator';
 
 export class LoginDto {
-    @IsEthereumAddress()
-    public readonly address: string;
+  @IsEthereumAddress()
+  @IsNotEmpty()
+  address: string;
 
-    @IsHexadecimal()
-    public readonly signature: string;
+  @IsHexadecimal()
+  @IsNotEmpty()
+  signature: string;
 
-    @IsString()
-    public readonly message: string;
-
+  @IsString()
+  @IsNotEmpty()
+  message: string;
 }
