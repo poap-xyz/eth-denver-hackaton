@@ -1,0 +1,88 @@
+.page {
+  display: grid;
+  flex-wrap: wrap;
+  width: 1400px;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+}
+
+.event {
+  grid-column: 1;
+  padding: 20px;
+  border: 1px solid #c5c4c4;
+  border-radius: 24px;
+  margin-right: 20px;
+  text-align: center;
+  background-color: darkslategrey;
+  color: #fff;
+  max-width: 495px;
+
+  .image {
+    height: auto;
+  }
+
+  .name {
+    padding: 20px 10px;
+    h3 {
+      font-size: 24px;
+      line-height: 32px;
+      padding: 24px;
+      text-shadow: 0 0 1px rgb(0 0 0 / 20%);
+      opacity: .9;
+      font-weight: 900;
+    }
+  }
+
+  .info {
+    padding: 24px 32px;
+  }
+}
+
+
+
+.feed {
+  grid-column: 2;
+  
+  .title {
+    display: flex;
+    justify-content: space-between;
+
+    h2 {
+      font-size: 42px;
+      margin-top: 0;
+    }
+
+    .button {
+      padding: 10px;
+      background-color: dimgray;
+      border-radius: 10px;
+      color: #fff;
+      height: 38px;
+    }
+  }
+}
+
+.itemFeed {
+  margin-bottom: 20px;
+
+  .cardFeed {
+    padding: 20px;
+    border: 1px solid #c5c4c4;
+    border-radius: 24px;
+
+    .address {
+      margin-bottom: 10px;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .imageFeed {
+      margin-bottom: 15px;
+    }
+    
+    .commentFeed {
+      color: #5a5a5a;
+    }
+  }
+}
+
