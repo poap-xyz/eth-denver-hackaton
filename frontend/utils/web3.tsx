@@ -22,7 +22,7 @@ const useCustomState = () => {
     walletconnect: {
       package: WalletConnectProvider,
       options: {
-        infuraId: process.env.REACT_APP_INFURA_KEY,
+        infuraId: 'https://mainnet.infura.io/v3/9a5c8c3500654b0dba3912d17737222a',
       },
     },
   };
@@ -30,7 +30,6 @@ const useCustomState = () => {
   useEffect(() => {
     setWeb3Modal(new Web3Modal({
       network: 'mainnet',
-      cacheProvider: true,
       providerOptions,
     }));
   }, []); //eslint-disable-line
