@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Event } from "../../events/entities/event.entity";
 
 @Entity()
 export class Post {
@@ -8,7 +9,7 @@ export class Post {
   urlIPFS: string;
   @Column({ nullable: false })
   description: string;
-  @Column() //TODO ADD Account entity relationship @ManyToOne(() => Account, account => account.address)
+  @Column({ name: 'account_id', nullable: false }) //TODO ADD Account entity relationship @ManyToOne(() => Account, account => account.address)
   accountId: string;
   @Column()
   reactions: string;

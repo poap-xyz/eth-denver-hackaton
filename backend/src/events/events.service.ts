@@ -1,20 +1,26 @@
-import { Injectable } from '@nestjs/common';
-import { PostsService } from '../posts/posts.service';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Event } from './entities/event.entity';
 import axios from 'axios';
 
 @Injectable()
 export class EventsService {
-  constructor(private readonly postsService: PostsService) {}
+  constructor() {}
 
   private static async findEventFromPOAPApi(id: number): Promise<Event | null> {
-    const response = await axios(`https://api.poap.xyz/events/id/${id}`);
-    return await response.data;
+    try {
+      const response = await axios(`https://api.poap.xyz/events/id/${id}`);
+      return await response.data;
+    } catch (e) {
+      return null;
+    }
   }
 
   async findOne(id: number): Promise<Event | null> {
     const event = await EventsService.findEventFromPOAPApi(id);
-    event.posts = await this.postsService.findAllByEventId(id);
+    if (!event) {
+      throw new NotFoundException();
+    }
+    //event.posts = await this.postsService.findAllByEventId(id);
     return event;
   }
 }
