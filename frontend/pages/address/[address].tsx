@@ -6,6 +6,8 @@ import EventCard from "../../components/EventCard";
 import { EventData } from "../../types/types";
 
 import styles from "../../styles/Event.module.scss";
+import { waitUntilSymbol } from "next/dist/server/web/spec-compliant/fetch-event";
+import { scan } from "../../utils/api";
 
 const Address: NextPage = () => {
   const [events, setEvents] = useState([]);
@@ -16,14 +18,17 @@ const Address: NextPage = () => {
 
   useEffect(() => {
     if (address) {
-      getEvents();
+      getEvents(address);
     }
   }, [address]);
 
-  const getEvents = async () => {
-    const res = await fetch(`https://api.poap.xyz/actions/scan/${address}`);
-    const events = await res.json();
-    setEvents(events);
+  const getEvents = async (address:any) => {
+    console.log(address);
+    const res = await scan(address);
+    console.log(res);
+    if (res.data){
+      setEvents(res.data);
+    }
   };
 
   if (!address) return <div>Error with address</div>;
@@ -33,7 +38,7 @@ const Address: NextPage = () => {
       <div className={styles.grid}>
         {events.length > 0 &&
           events.map(({ event }: EventData) => (
-            <EventCard key={event.id} event={event} />
+            <EventCard address={address} key={event.id} event={event} />
           ))}
       </div>
     </>

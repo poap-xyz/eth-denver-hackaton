@@ -1,0 +1,21 @@
+.uiImg {
+    display: block;
+  
+    &.animate {
+      transition: opacity .4s ease;
+      will-change: opacity;
+    }
+  
+    &.client {
+      opacity: 0;
+    }
+  
+    &.loaded {
+      opacity: 1;
+    }
+  
+    &.error, &:not([src]) {
+      visibility: hidden;
+    }
+  }
+  
