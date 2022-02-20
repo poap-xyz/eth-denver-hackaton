@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Event } from './entities/event.entity';
 import axios from 'axios';
+import { TheGraphBlockchainQuery } from '../graph.plugin';
 
 @Injectable()
 export class EventsService {
@@ -13,6 +14,11 @@ export class EventsService {
     } catch (e) {
       return null;
     }
+  }
+
+  public async hasAddress(address: string, event: number): Promise<boolean> {
+    const theGraphService = new TheGraphBlockchainQuery();
+    return theGraphService.hasAddress(address, event.toString());
   }
 
   async findOne(id: number): Promise<Event | null> {
