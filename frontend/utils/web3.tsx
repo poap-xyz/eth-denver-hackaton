@@ -83,9 +83,9 @@ const useCustomState = () => {
     const message = "Welcome to POAP Lens";
     await _web3.eth.personal.sign(message, _account,'',   async (err:any,res:any) => {
       if (res) {
-        const _accessToken = await loginWallet(res, _account);
+        const _accessToken = await loginWallet(message, _account, res);
         if (_accessToken) {
-          //setAccessToken(_accessToken)
+          setAccessToken(_accessToken)
         }
         setAccount(_account);
         setIsConnected(true);
