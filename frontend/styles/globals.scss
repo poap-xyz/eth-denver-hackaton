@@ -5,6 +5,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Nunito', sans-serif;
+  background-color: var(--main-background-color);
+  color: var(--primary-text-color);;
 }
 
 a {
@@ -61,5 +63,12 @@ a {
 
   --share-link-input-background: #FAFAFA;
   /* --svg-path-color: #655E94; */
-  --svg-path-color: #555
+  --svg-path-color: #555;
+
+  --card-event-background: rgba(167, 127, 231, 0.801);
+  --card-event-border-color: #c5c4c4;
+
+  --card-comment-background: #66478f40;
+  --card-comment-border-color: #b58deb36;
+
 }
