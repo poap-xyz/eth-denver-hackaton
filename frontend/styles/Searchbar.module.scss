@@ -1,0 +1,87 @@
+.uiSearchbar {
+  &Wrap {
+    position: relative;
+    border-radius: 60px;
+    background-color: var(--searchbar-translucent-color);
+  }
+
+  &Icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 16px;
+    opacity: .6;
+    pointer-events: none;
+
+    svg {
+      width: 18px;
+    }
+  }
+
+  &Input {
+    display: block;
+    width: 100%;
+    border-radius: 60px;
+    background-color: transparent;
+    font-size: 18px;
+    font-family: Nunito, sans-serif;
+    font-weight: 600;
+    height: 64px;
+    padding: 16px 16px 16px 48px;
+    border: 0;
+    color: var(--searchbar-text-color);
+    outline: none;
+
+    &::placeholder {
+      color: var(--searchbar-text-color);
+      opacity: .6;
+    }
+
+    &:focus {
+      box-shadow: 0 0 16px rgba(0,0,0,.06);
+    }
+
+    &.value + .uiSearchbar-icon {
+      opacity: 1;
+    }
+  }
+
+  &Cta {
+    padding-top: 24px;
+  }
+
+  &Button {
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 56px;
+    height: 56px;
+    width: 150px;
+    background: var(--searchbar-button-gradient);
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      bottom: 2px;
+      right: 2px;
+      border-radius: 52px;
+      background-color: var(--searchbar-translucent-color);
+    }
+
+    span {
+      position: relative;
+      z-index: 1;
+      color: var(--searchbar-button-text-color);
+      font-size: 20px;
+      font-weight: 900;
+      font-family: Nunito, sans-serif;
+    }
+  }
+}
+
