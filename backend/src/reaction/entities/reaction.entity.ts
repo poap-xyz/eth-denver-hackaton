@@ -1,7 +1,8 @@
 import { IsOptional } from "class-validator";
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, Unique, UpdateDateColumn } from "typeorm";
 
 @Entity()
+@Unique(['post_id', 'address'])
 export class Reaction {
     @PrimaryGeneratedColumn()
     id: number;
@@ -10,15 +11,11 @@ export class Reaction {
     address: string;
 
     @Column()
-    event_id: number;
+    post_id: number;
 
     @Column()
     @IsOptional()
-    up_vote: string;
-
-    @Column()
-    @IsOptional()
-    down_vote: string;
+    vote: number;
 
     @CreateDateColumn({ name: 'created_at' })
     createdAt: Date;

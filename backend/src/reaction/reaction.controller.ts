@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, Param, Post } from '@nestjs/common';
 import { CreateReactionDto } from './dto/create-reaction.dto';
 import { ReactionService } from './reaction.service';
 
@@ -7,10 +7,12 @@ export class ReactionController {
   constructor(private readonly reactionService: ReactionService) { }
 
   @Post()
+  @HttpCode(204)
   async create(@Body() createReactionDto: CreateReactionDto) {
-    const re = await this.reactionService.create(createReactionDto);
-    console.log(re);
-    return re;
+    await this.reactionService.vote({
+      post_id: createReactionDto.post_id,
+      address: createReactionDto.address
+    })
   }
 
   @Get()

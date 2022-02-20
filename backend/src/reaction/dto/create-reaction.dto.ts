@@ -6,8 +6,5 @@ export class CreateReactionDto {
     address: string;
 
     @IsNotEmpty()
-    event_id: number;
-
-    @IsNotEmpty()
-    vote: string;
+    post_id: number;
 }
