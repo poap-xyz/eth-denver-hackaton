@@ -16,11 +16,6 @@ export class ReactionController {
     })
   }
 
-  @Get()
-  findAll() {
-    return this.reactionService.findAll();
-  }
-
   @Get(':id')
   async findOne(@Param('id') id: string) {
     const reaction = await this.reactionService.getReactionByPostId({ post_id: Number(id) });

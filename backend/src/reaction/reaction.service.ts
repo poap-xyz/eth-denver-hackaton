@@ -28,16 +28,8 @@ export class ReactionService {
     }
   }
 
-
   async getReactionByPostId({ post_id }: { post_id: number; }) {
     return await this.reactionRepository.find({ post_id: post_id })
   }
 
-  findAll() {
-    return this.reactionRepository.find();
-  }
-
-  findOne(id: number) {
-    return this.reactionRepository.findOne(id);
-  }
 }
