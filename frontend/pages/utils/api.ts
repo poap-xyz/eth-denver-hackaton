@@ -14,14 +14,21 @@ async function getSignature() {
 }
 
 async function loginWallet(message:string, address: string) {
-  const res = await api.post( "account/token/", {
+  /* const res = await api.post( "account/token/", {
     "signature": message,
     "address": address
   });
   return res.data.access;
+  */
+ return true;
+}
+
+async function getEns(addr:string) {
+  return await axios.get('https://api.poap.xyz/actions/ens/0x8C775808Fffbb99208452698bc619Cf9D07d8b2e')
 }
 
 export {
   getSignature,
-  loginWallet
+  loginWallet,
+  getEns
 };
