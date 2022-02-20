@@ -9,5 +9,6 @@ import { StorageModule } from '../shared/storage/storage.module';
   imports: [TypeOrmModule.forFeature([PostRepository]), StorageModule],
   controllers: [PostsController],
   providers: [PostsService],
+  exports: [PostsService],
 })
 export class PostsModule {}

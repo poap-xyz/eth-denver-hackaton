@@ -1,5 +1,4 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Reaction } from '../../reaction/entities/reaction.entity';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Post {
@@ -13,7 +12,6 @@ export class Post {
   accountId: string;
   @Column()
   reactions: string;
-  /*
-  @OneToMany(() => Reaction, (reaction) => reaction.post)
-  reactions: Reaction[]; //TODO ADD Relations relationship*/
+  @Column({ nullable: false, name: 'event_id' })
+  eventId: number;
 }
