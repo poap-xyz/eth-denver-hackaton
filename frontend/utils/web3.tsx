@@ -4,8 +4,21 @@ import Web3 from 'web3';
 import Web3Modal from 'web3modal';
 // @ts-ignore
 import WalletConnectProvider from '@walletconnect/web3-provider';
+import * as UAuthWeb3Modal from '@uauth/web3modal'
+import UAuthSPA from '@uauth/js'
 
 import { getEns, loginWallet } from './api';
+import { IUAuthOptions } from '@uauth/web3modal';
+
+// These options are used to construct the UAuthSPA instance.
+export const uauthOptions: IUAuthOptions = {
+  clientID: 'client_id',
+  clientSecret: 'client_secret',
+  redirectUri: 'http://localhost:3000',
+
+  // Must include both the openid and wallet scopes.
+  scope: 'openid wallet',
+}
 
 const useCustomState = () => {
   let _token;
@@ -19,6 +32,19 @@ const useCustomState = () => {
 
   // Web3Modal
   const providerOptions = {
+    'custom-uauth': {
+      // The UI Assets
+      display: UAuthWeb3Modal.display,
+  
+      // The Connector
+      connector: UAuthWeb3Modal.connector,
+  
+      // The SPA libary
+      package: UAuthSPA,
+  
+      // The SPA libary options
+      options: uauthOptions,
+    },
     walletconnect: {
       package: WalletConnectProvider,
       options: {
