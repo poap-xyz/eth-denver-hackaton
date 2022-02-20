@@ -28,7 +28,7 @@ const CreatePost = ({eventId, address}:any) => {
       return (
         <form onSubmit={newPost} className={styles.homeBox}>
           <label htmlFor="description" className={styles.name}>Description</label>
-          <input id="description" name="description" type="text" required className={styles.input}/>
+          <textarea id="description" name="description" required className={styles.input}></textarea>
           <label htmlFor="file" className={styles.name}>Image</label>
           <input id="image" name="image" type="file" onChange={(event) =>  {
               const files = event.target.files;
