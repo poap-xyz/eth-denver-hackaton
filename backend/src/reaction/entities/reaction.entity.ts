@@ -1,15 +1,17 @@
-import { IsOptional } from 'class-validator';
 import {
   Column,
   CreateDateColumn,
   Entity,
   ManyToOne,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
+  Unique,
 } from 'typeorm';
 import { Post } from '../../posts/entities/post.entity';
 
+import { IsOptional } from 'class-validator';
+
 @Entity()
+@Unique(['post_id', 'address'])
 export class Reaction {
   @PrimaryGeneratedColumn()
   id: number;
@@ -18,15 +20,11 @@ export class Reaction {
   address: string; //TODO add account here
 
   @ManyToOne(() => Post, (post) => post._id, { eager: false })
-  post: Post; //TODO add relationship here eager false
+  post: Post; 
 
   @Column()
   @IsOptional()
-  up_vote: string;
-
-  @Column()
-  @IsOptional()
-  down_vote: string;
+  vote: number;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
