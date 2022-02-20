@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {useStateContext} from "../utils/web3";
+import {useStateContext} from "../../utils/web3";
 import Jazzicon from "./Layout/Jazzicon"
 import styles from "../../styles/WalletHeader.module.scss"
 
