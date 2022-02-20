@@ -134,6 +134,7 @@ const Feed: NextPage = () => {
                         </Link>
                     </div>
                     {
+                        (feed && feed.length ) ?
                         feed.map(comment => {
                             return (
                                 <div className={styles.itemFeed} key={comment.author}>
@@ -175,6 +176,8 @@ const Feed: NextPage = () => {
                                 </div>
                             )
                         })
+                        :
+                        <div className={"loader"}>Loading...</div>
                     }
                 </div>
             </div>
