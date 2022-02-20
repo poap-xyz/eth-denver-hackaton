@@ -5,4 +5,5 @@ export class StoreDataDto {
   description: string;
   filename: string;
   buffer: Buffer;
+  type: string;
 }

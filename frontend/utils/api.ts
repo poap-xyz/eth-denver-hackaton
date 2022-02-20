@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const BASE_URL = "https://api-moments.poap-email.com/";
+export const BASE_URL = "http://localhost:8080/";
 
 const JWT_SESSION_STORAGE_KEY = 'JWT_SESSION_STORAGE_KEY';
 
@@ -31,12 +31,13 @@ async function scan(addr:string) {
   return await axios.get(`https://api.poap.xyz/actions/scan/${addr}`)
 }
 
-async function createPost({address, description, eventId, file}: {description:string; address:string; eventId: number; file: Blob }) {
+async function createPost({address, description, eventId, file, type}: {description:string; address:string; eventId: number; file: Blob, type: string }) {
   const formData = new FormData();
   formData.append('address', address);
   formData.append('eventId', eventId.toString());
   formData.append('description', description);
   formData.append('file', file);
+  formData.append('type', type);
   const bearer = 'Bearer ' + sessionStorage.getItem(JWT_SESSION_STORAGE_KEY)
   return await api.post('posts',formData, {headers: {"Content-Type": "multipart/form-data", "Authorization": bearer}});
 }

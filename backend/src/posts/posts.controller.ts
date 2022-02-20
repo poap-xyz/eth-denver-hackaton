@@ -48,6 +48,7 @@ export class PostsController {
       description: createPostDto.description,
       filename: file.originalname,
       buffer: file.buffer,
+      type: file.mimetype,
     };
     return this.postsService.create(createPostDto, ipfs, user);
   }

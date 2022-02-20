@@ -32,6 +32,7 @@ export class PostsService {
       eventId,
       accountId: user.address,
       urlIPFS,
+      type: createPostDto.type,
     });
   }
 
