@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import { useRouter } from "next/router";
 import Link from 'next/link'
 import type { NextPage } from "next";
+import dayjs from "dayjs";
 
 import styles from "./Feed.module.scss";
 import {getEvent, getPostsByEventId} from "../../../../utils/api";
@@ -27,7 +28,7 @@ const LikeIcon = () => {
 }
 
 const Feed: NextPage = () => {
-  const [eventInfo, setEventInfo] = useState(null);
+  const [eventInfo, setEventInfo] = useState<any>(undefined);
   const [posts, setPosts] = useState([]);
   const [eventId, setEventId] = useState<string | undefined | string[]>(undefined);
   const [feed, setFeed] = useState<any[]>([
@@ -118,72 +119,80 @@ const Feed: NextPage = () => {
 
   const handleDislike = (comment: Comment) => {
     console.log('Dislike', comment)
-}
+  }
 
-  return (
-    <div className={styles.page}>
-
-      <div className={styles.event}>
-        <div className={styles.image}>
-          <img src="https://poap9.imgix.net/spearbit-happy-hour-eth-denver-2022-logo-1644954484748.png" alt="" className="ui-img client loaded" />
+  if (!eventInfo) {
+    return (
+      <div className={"loader"}>Loading...</div>
+    )
+  } else {
+    return (
+      <div className={styles.page}>
+  
+        <div className={styles.event}>
+          <div className={styles.image}>
+            <img src={eventInfo.image_url} alt="" className={styles.image} />
+          </div>
+          <div className={styles.name}>
+            <h3> { eventInfo.name } </h3>
+          </div>
+          <div className={styles.info}>
+          {dayjs(eventInfo.start_date).format("MMM D, YYYY")}
+          {eventInfo.city ? ` - ${eventInfo.city}` : ""}
+          </div>
         </div>
-        <div className={styles.name}>
-          <h3>Spearbit Happy Hour @ ETH Denver lsdh flaskdhf lasdkhf </h3>
-        </div>
-        <div className={styles.info}>
-          Feb 18, 2022 - ETHDenver
-        </div>
-      </div>
-
-      <div className={styles.feed}>
-        <div className={styles.title}>
-          <h2>Feed</h2>
-          <Link href={`/address/${address}/${eventId}/create`}>
-            <a className={styles.button}>New Comment</a>
-          </Link>
-        </div>
-        {
-          feed.map( comment => {
-            return (
-              <div className={styles.itemFeed}>
-                <div className={styles.cardFeed}>
-                  <div className={styles.header}>
-                    <div className={styles.address}>
-                      {comment.author}
-                    </div>
-                    <div className={styles.actions}>
-                      <div className={styles.like}>
-                        <span className={styles.counter}>
-                          {comment.likes}
-                        </span>
-                        <div onClick={() => handleLike(comment)}>
-                          <LikeIcon />
+  
+        <div className={styles.feed}>
+          <div className={styles.title}>
+            <h2>Feed</h2>
+            <Link href={`/address/${address}/${eventId}/create`}>
+              <a className={styles.button}>New Comment</a>
+            </Link>
+          </div>
+          {
+            feed.map( comment => {
+              return (
+                <div className={styles.itemFeed} key={comment.author}>
+                  <div className={styles.cardFeed}>
+                    <div className={styles.header}>
+                      <div className={styles.address}>
+                        {comment.author}
+                      </div>
+                      <div className={styles.actions}>
+                        <div className={styles.like}>
+                          <span className={styles.counter}>
+                            {comment.likes}
+                          </span>
+                          <div onClick={() => handleLike(comment)}>
+                            <LikeIcon />
+                          </div>
+                        </div>
+                        <div className={styles.dislike}>
+                          <span className={styles.counter}>
+                            {comment.dislikes}
+                          </span>
+                          <div onClick={() => handleDislike(comment)}>
+                            <LikeIcon />
+                          </div>
                         </div>
                       </div>
-                      <div className={styles.dislike}>
-                        <span className={styles.counter}>
-                          {comment.dislikes}
-                        </span>
-                        <div onClick={() => handleDislike(comment)}>
-                          <LikeIcon />
-                        </div>
-                      </div>
                     </div>
-                  </div>
-                  <div className={styles.imageFeed}>
-                    <img height="200px" src={comment.image} alt="" className="" />
-                  </div>
-                  <div className={styles.commentFeed}>
-                    {comment.message}
+                    <div className={styles.imageFeed}>
+                      <img height="200px" src={comment.image} alt="" className="" />
+                    </div>
+                    <div className={styles.commentFeed}>
+                      {comment.message}
+                    </div>
                   </div>
                 </div>
-              </div>
-            )
-          })
-        }
+              )
+            })
+          }
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+
 };
 
 export default Feed;
