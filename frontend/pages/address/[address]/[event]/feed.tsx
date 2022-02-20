@@ -171,7 +171,7 @@ const Feed: NextPage = () => {
                     </div>
                   </div>
                   <div className={styles.imageFeed}>
-                    <img height="200px" src={comment.image} alt="" className="" />
+                    <img src={comment.image} alt="" className="" />
                   </div>
                   <div className={styles.commentFeed}>
                     {comment.message}
