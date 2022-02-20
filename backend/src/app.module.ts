@@ -4,9 +4,11 @@ import { AccountsModule } from './accounts/accounts.module';
 import { EventsModule } from './events/events.module';
 import { PostsModule } from './posts/posts.module';
 import { ReactionModule } from './reaction/reaction.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({ envFilePath: '.env' }),
     EventsModule,
     AccountsModule,
     PostsModule,
@@ -16,11 +18,11 @@ import { ReactionModule } from './reaction/reaction.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'secret',
-      database: 'poap_ethdenver',
+      password: 'CarGGIEpXh',
+      database: 'ethdenver',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-  ]
+  ],
 })
-export class AppModule { }
+export class AppModule {};
