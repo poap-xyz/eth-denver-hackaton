@@ -48,7 +48,7 @@ const Feed: NextPage = () => {
       <div className={styles.feed}>
         <div className={styles.title}>
           <h2>Feed</h2>
-          <Link href={`/address/${address}/${event}/feed/create-comment`}>
+          <Link href={`/address/${address}/${event}/create`}>
             <a className={styles.button}>New Comment</a>
           </Link>
         </div>

@@ -8,14 +8,14 @@ export class ReactionService {
   constructor(
     @InjectRepository(Reaction)
     private reactionRepository: Repository<Reaction>,
-  ) {}
+  ) { }
 
   async vote({
     post_id,
     address,
     vote,
   }: {
-    post_id: number;
+    post_id: string;
     address: string;
     vote?: VOTE;
   }) {
@@ -43,7 +43,7 @@ export class ReactionService {
     }
   }
 
-  async getReactionByPostId({ post_id }: { post_id: number }) {
+  async getReactionByPostId({ post_id }: { post_id: string }) {
     return await this.reactionRepository.find({ post_id: post_id });
   }
 }
