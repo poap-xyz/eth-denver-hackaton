@@ -43,7 +43,7 @@ const Searchbar: NextComponentType = () => {
       <div className={styles.wrap}>
         <input
           type="text"
-          placeholder="search by address or ENS"
+          placeholder="Search by address or ENS"
           className={classnames(styles.input, { value: null })}
           value={query}
           onChange={e => setQuery(e.target.value)}
@@ -56,7 +56,7 @@ const Searchbar: NextComponentType = () => {
       </div>
       <div className={styles.cta}>
         <button type="submit" className={styles.submit}>
-          <span>search</span>
+          <span>Search</span>
         </button>
       </div>
     </form>

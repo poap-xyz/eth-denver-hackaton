@@ -30,12 +30,19 @@ const Address: NextPage = () => {
 
   return (
     <>
-      <div className={styles.grid}>
-        {events.length > 0 &&
-          events.map(({ event }: EventData) => (
-            <EventCard address={address} key={event.id} event={event} />
-          ))}
-      </div>
+    {events.length > 0 ?
+      (
+          <div className={styles.grid}>
+            {
+              events.map(({ event }: EventData) => (
+                <EventCard address={address} key={event.id} event={event} />
+              ))
+            }
+          </div>
+        ) : (
+          <div className={"loader"}>Loading...</div>
+        )
+      }
     </>
   );
 };

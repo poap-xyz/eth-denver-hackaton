@@ -4,9 +4,7 @@ import styles from "../styles/Event.module.scss";
 
 const Event: NextPage = () => {
   return (
-    <>
-      <div className={styles.grid}></div>
-    </>
+    <div className={styles.grid}></div>
   );
 };
 

@@ -63,6 +63,8 @@ svg {
     height: 56px;
     width: 150px;
     background: var(--searchbar-button-gradient);
+    border: none;
+    cursor: pointer;
 
 :before {
     content: '';
