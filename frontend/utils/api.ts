@@ -48,10 +48,32 @@ async function vote({ address, post_id }: { address: string; post_id: number; })
   })
 }
 
+async function getEvent({eventId}: {eventId: number}) {
+  const response = await api.get(`events/${eventId}`);
+  return await response.data;
+}
+
+async function getPostsByEventId({eventId}: {eventId: any}) {
+  const response = await api.get(`posts/event/${eventId}`);
+  return await response.data;
+}
+
+async function reaction(postId: any, vote: number, address: any) {
+  const bearer = 'Bearer ' + sessionStorage.getItem(JWT_SESSION_STORAGE_KEY)
+  const response = await api.put(`post/${postId}/reactions`, {
+    vote,
+    address
+  }, {headers: {"Authorization": bearer}});
+  return await response.data;
+}
+
 export {
   loginWallet,
   getEns,
   vote,
   scan,
-  createPost
+  createPost,
+  getEvent,
+  getPostsByEventId,
+  reaction
 };
