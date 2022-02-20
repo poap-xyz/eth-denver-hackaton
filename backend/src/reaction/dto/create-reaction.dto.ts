@@ -1,11 +1,11 @@
-import { IsEthereumAddress, IsNotEmpty, IsOptional } from "class-validator";
-import { VOTE } from "../entities/reaction.entity";
+import { IsEthereumAddress, IsNotEmpty, IsOptional } from 'class-validator';
+import { VOTE } from '../entities/reaction.entity';
 
 export class CreateReactionDto {
-    @IsNotEmpty()
-    @IsEthereumAddress()
-    address: string;
+  @IsNotEmpty()
+  @IsEthereumAddress()
+  address: string;
 
-    @IsOptional()
-    vote: VOTE
+  @IsOptional()
+  vote: VOTE;
 }

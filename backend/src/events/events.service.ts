@@ -1,38 +1,20 @@
 import { Injectable } from '@nestjs/common';
-import { CreateEventDto } from './dto/create-event.dto';
-import { UpdateEventDto } from './dto/update-event.dto';
-import { EventNotFoundError } from './exceptions/eventNotFound.error';
+import { PostsService } from '../posts/posts.service';
+import { Event } from './entities/event.entity';
+import axios from 'axios';
 
 @Injectable()
 export class EventsService {
-  create(createEventDto: CreateEventDto) {
-    const eventId = createEventDto.eventId;
-    const event = this.findOne(eventId);
-    if (!event) {
-    }
+  constructor(private readonly postsService: PostsService) {}
+
+  private static async findEventFromPOAPApi(id: number): Promise<Event | null> {
+    const response = await axios(`https://api.poap.xyz/events/id/${id}`);
+    return await response.data;
   }
 
-  private getEventFromAPI(eventId: number) {
-    //TODO implement connection
-    const event = null;
-    if (!event) {
-      throw new EventNotFoundError();
-    }
-  }
-
-  findAll() {
-    return `This action returns all events`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} event`;
-  }
-
-  update(id: number, updateEventDto: UpdateEventDto) {
-    return `This action updates a #${id} event`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} event`;
+  async findOne(id: number): Promise<Event | null> {
+    const event = await EventsService.findEventFromPOAPApi(id);
+    event.posts = await this.postsService.findAllByEventId(id);
+    return event;
   }
 }
