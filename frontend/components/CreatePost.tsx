@@ -22,7 +22,6 @@ const CreatePost = ({eventId, address}:any) => {
         }
         const file = new Blob([image], {type: image.type})
         const res = await createPost({address,description,file, eventId: +eventId});
-        console.log(await res.data);
       }
     
       return (
