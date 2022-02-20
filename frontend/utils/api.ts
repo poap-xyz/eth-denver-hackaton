@@ -25,7 +25,11 @@ async function loginWallet(message: string, address: string) {
 }
 
 async function getEns(addr:string) {
-  return await axios.get(`https://api.poap.xyz/actions/ens/{$addr}`)
+  return await axios.get(`https://api.poap.xyz/actions/ens/${addr}`)
+}
+
+async function scan(addr:string) {
+  return await axios.get(`https://api.poap.xyz/actions/scan/${addr}`)
 }
 
 async function vote({ address, post_id }: { address: string; post_id: number; }) {
@@ -39,5 +43,6 @@ export {
   getSignature,
   loginWallet,
   getEns,
-  vote
+  vote,
+  scan
 };

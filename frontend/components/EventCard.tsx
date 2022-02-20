@@ -3,8 +3,10 @@ import { useState, useEffect, useContext, memo } from "react";
 import Image from "next/image";
 import classnames from "classnames";
 import dayjs from "dayjs";
+import Link from 'next/link'
+
 // import { LayoutContext } from 'context/layout'
-// import Img from 'component/Layout/Img'
+import Img from '../components/Img'
 // import { imageLoader, getImageUrl, wait } from 'lib'
 // import PoapSVG from 'component/Poap/SVG'
 
@@ -12,18 +14,21 @@ import styles from "../styles/EventCard.module.scss";
 
 interface EventCardProps {
   event: Event;
+  address: String;
 }
 
-const EventCard = ({ event }: EventCardProps) => {
+const EventCard = ( { address, event }: EventCardProps) => {
+  console.log(event);
   if (!event) return null;
+
+
   return (
-    <div className={styles.poap}>
+    <Link href={`/address/${address}/${event.id}/feed`}>
+    <div className={styles.poap} >
       <div className={styles.background}>
-        <Image
+        <Img
           className={styles.animate}
           src={`${event.image_url}`}
-          width={315}
-          height={315}
         />
       </div>
 
@@ -31,7 +36,7 @@ const EventCard = ({ event }: EventCardProps) => {
         <div className={styles.imageContainer}>
           <div className={styles.imageAr}>
             <div className={styles.image}>
-              <Image src={event.image_url} width={150} height={150} />
+              <Img src={event.image_url} />
             </div>
           </div>
         </div>
@@ -46,6 +51,7 @@ const EventCard = ({ event }: EventCardProps) => {
         </div>
       </div>
     </div>
+    </Link>
   );
 };
 
