@@ -1,4 +1,5 @@
 import type { NextComponentType } from "next";
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import classnames from "classnames"
 import Image from "next/image";
@@ -26,10 +27,19 @@ const SearchIcon = () => {
 
 const Searchbar: NextComponentType = () => {
 
+  const router = useRouter()
   const [ query, setQuery ] = useState('')
 
+  const handleSubmit = (event: React.SyntheticEvent<EventTarget>) => {
+    event.preventDefault()
+
+    if (query) {
+      router.push(`/address/${query}`)
+    }
+  }
+
   return  (
-    <form className={styles.searchbar} onSubmit={()=>{}}>
+    <form className={styles.searchbar} onSubmit={handleSubmit}>
       <div className={styles.wrap}>
         <input
           type="text"
