@@ -25,10 +25,11 @@ export class PostsController {
     @Body() createPostDto: CreatePostDto,
     @UploadedFile() file: Express.Multer.File,
   ) {
+
     const ipfs: StoreDataDto = {
-      name: createPostDto.accountId,
+      name: createPostDto.address,
       description: createPostDto.description,
-      filename: file.filename,
+      filename: file.originalname,
       buffer: file.buffer,
     };
     return this.postsService.create(createPostDto, ipfs);

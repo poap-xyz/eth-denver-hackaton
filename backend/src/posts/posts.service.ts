@@ -14,7 +14,11 @@ export class PostsService {
   async create(createPostDto: CreatePostDto, ipfs: StoreDataDto) {
     console.log(this.storageService);
     const urlIPFS = await this.storageService.store(ipfs);
-    return await this.postRepository.save({ ...createPostDto, urlIPFS });
+    return await this.postRepository.save({
+      ...createPostDto,
+      account: createPostDto.address,
+      urlIPFS,
+    });
   }
 
   findAll() {
