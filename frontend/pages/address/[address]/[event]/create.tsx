@@ -5,10 +5,11 @@ import { useStateContext } from "../../../../utils/web3";
 const Create = () => {
   const { account } = useStateContext();
   const router = useRouter();
-  const { address, event } = router.query;
+  const { address, event: eventId } = router.query;
+  
   return (
     <>
-        <CreatePost event={event} address={account}/>
+        <CreatePost eventId={eventId} address={account}/>
     </>
     );
 }

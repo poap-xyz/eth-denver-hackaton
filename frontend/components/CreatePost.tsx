@@ -2,7 +2,7 @@ import {createPost} from "../utils/api"
 import React, { useEffect, useState } from 'react'
 import styles from "../styles/Create.module.scss";
 
-const CreatePost = ({events, address, eventId}:any) => {
+const CreatePost = ({eventId, address}:any) => {
     const [dataUri, setDataUri] = useState('');
     const [image, setImage] = useState<File | null>(null);
 
