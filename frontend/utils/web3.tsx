@@ -39,7 +39,7 @@ const useCustomState = () => {
   const [web3, setWeb3] = useState<Web3 | null>(null);
   const [account, setAccount] = useState<string>('');
   const [accessToken, setAccessToken] = useState<string>('');
-  const [ens, setEns] = useState<string>('');
+  const [ens, setEns] = useState<string>();
   const [network, setNetwork] = useState<number>(0);
   // @ts-ignore
   const [, setProvider] = useState<any>(null);

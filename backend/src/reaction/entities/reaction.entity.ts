@@ -1,28 +1,45 @@
-import { IsOptional } from "class-validator";
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, Unique, UpdateDateColumn } from "typeorm";
+import { IsOptional } from 'class-validator';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  Unique,
+  UpdateDateColumn,
+} from 'typeorm';
 export enum VOTE {
-    POSITIVE = 1,
-    NEGATIVE = -1
+  POSITIVE = 1,
+  NEGATIVE = -1,
 }
 @Entity()
 @Unique(['post_id', 'address'])
 export class Reaction {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column()
-    address: string;
+  @Column()
+  address: string;
 
-    @Column()
-    post_id: number;
+  @Column()
+  post_id: number;
 
-    @Column()
-    @IsOptional()
-    vote: number;
+  @Column()
+  @IsOptional()
+  vote: number;
 
-    @CreateDateColumn({ name: 'created_at' })
-    createdAt: Date;
+  @CreateDateColumn({ name: 'created_at' })
+  createdAt: Date;
 
-    @UpdateDateColumn({ name: 'updated_at' })
-    updatedAt: Date;
+  @UpdateDateColumn({ name: 'updated_at' })
+  updatedAt: Date;
 }
+/*
+@Entity()
+@Unique(['post_id', 'address'])
+export class Reaction {
+[..]
+  @ManyToOne(() => Post, (post) => post._id, { eager: false })
+  post: Post;
+[..]
+}
+*/
