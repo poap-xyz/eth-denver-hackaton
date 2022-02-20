@@ -1,21 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="33cee44c-e9a7-4b7b-8d2a-6c146d2c20aa" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/backend/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/backend/README.md" afterDir="false" />
+    <list default="true" id="2d724598-c9d2-4f5b-85d6-9855d9228114" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/src/accounts/entities/user.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/accounts/accounts.controller.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/accounts/accounts.controller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/accounts/accounts.controller.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/accounts/accounts.module.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/accounts/accounts.module.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/accounts/accounts.module.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/accounts/accounts.service.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/accounts/accounts.service.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/accounts/accounts.service.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/accounts/dto/create-account.dto.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/accounts/dto/create-account.dto.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/accounts/dto/create-account.dto.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/accounts/dto/update-account.dto.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/accounts/dto/update-account.dto.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/accounts/dto/update-account.dto.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/accounts/entities/account.entity.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/accounts/entities/account.entity.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/accounts/entities/account.entity.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/app.controller.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/app.controller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/app.controller.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/app.module.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/app.module.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/app.module.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/app.service.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/app.service.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/app.service.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/events/dto/create-event.dto.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/events/dto/create-event.dto.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/events/dto/create-event.dto.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/events/dto/update-event.dto.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/events/dto/update-event.dto.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/events/dto/update-event.dto.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/events/entities/event.entity.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/events/entities/event.entity.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/events/entities/event.entity.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/events/events.controller.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/events/events.controller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/events/events.controller.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/events/events.module.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/events/events.module.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/events/events.module.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/events/events.service.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/events/events.service.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/events/events.service.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/main.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/main.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/posts/dto/create-post.dto.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/posts/dto/create-post.dto.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/posts/dto/create-post.dto.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/posts/dto/update-post.dto.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/posts/dto/update-post.dto.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/posts/dto/update-post.dto.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/posts/entities/post.entity.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/posts/entities/post.entity.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/posts/entities/post.entity.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/posts/posts.controller.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/posts/posts.controller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/posts/posts.controller.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/posts/posts.module.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/posts/posts.module.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/posts/posts.module.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/posts/posts.service.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/posts/posts.service.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/posts/posts.service.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/dist/tsconfig.build.tsbuildinfo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/accounts/accounts.controller.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/accounts/accounts.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/accounts/accounts.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/accounts/accounts.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/accounts/accounts.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/accounts/accounts.service.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/accounts/accounts.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/accounts/dto/create-account.dto.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/accounts/dto/update-account.dto.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/accounts/entities/account.entity.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/posts/entities/post.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/posts/entities/post.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/posts/posts.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/posts/posts.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/backend/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/backend" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="25L4g7ujINU2pkoKod1z2aOV29B" />
+  <component name="ProjectId" id="25Lz267OOc0ovFyZHUwNUm35qyK" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -25,33 +123,60 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend/apps" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.DirectoryMappings" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend/src/accounts" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="yarn" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/backend/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/backend/apps" />
-      <recent name="$PROJECT_DIR$/backend" />
+      <recent name="$PROJECT_DIR$/backend/src/accounts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/backend/apps" />
-      <recent name="$PROJECT_DIR$/backend/apps/backend" />
-      <recent name="$PROJECT_DIR$/backend/apps/events" />
+      <recent name="$PROJECT_DIR$/backend/src/accounts/services" />
     </key>
+  </component>
+  <component name="RunManager" selected="Attach to Node.js/Chrome.Debug">
+    <configuration name="Debug" type="ChromiumRemoteDebugType" factoryName="Chromium Remote" port="9229" isV8Legacy="true">
+      <option name="v8Legacy" value="true" />
+      <method v="2">
+        <option name="NpmBeforeRunTask" enabled="true">
+          <package-json value="$PROJECT_DIR$/backend/package.json" />
+          <command value="run" />
+          <scripts>
+            <script value="start:debug" />
+          </scripts>
+          <node-interpreter value="project" />
+          <envs />
+        </option>
+      </method>
+    </configuration>
+    <configuration name="start:debug" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/backend/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start:debug" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Attach to Node.js/Chrome.Debug" />
+      <item itemvalue="npm.start:debug" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="33cee44c-e9a7-4b7b-8d2a-6c146d2c20aa" name="Changes" comment="" />
-      <created>1645293140928</created>
+      <changelist id="2d724598-c9d2-4f5b-85d6-9855d9228114" name="Changes" comment="" />
+      <created>1645320944442</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1645293140928</updated>
-      <workItem from="1645293142054" duration="2084000" />
-      <workItem from="1645295439008" duration="1682000" />
+      <updated>1645320944442</updated>
+      <workItem from="1645320945846" duration="9267000" />
     </task>
     <servers />
   </component>
@@ -68,11 +193,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <ignored-roots>
-      <path value="$PROJECT_DIR$/backend" />
-      <path value="$PROJECT_DIR$/backend/poap-lens" />
-    </ignored-roots>
   </component>
 </project>
