@@ -9,7 +9,7 @@ import { getEns, loginWallet } from './api';
 
 const useCustomState = () => {
   let _token;
-  if (typeof window !== "undefined") { 
+  if (typeof window !== "undefined") {
     _token = localStorage.getItem('fcm-token');
   }
 
@@ -28,7 +28,7 @@ const useCustomState = () => {
   };
 
   useEffect(() => {
-    setWeb3Modal( new Web3Modal({
+    setWeb3Modal(new Web3Modal({
       network: 'mainnet',
       cacheProvider: true,
       providerOptions,
@@ -68,11 +68,11 @@ const useCustomState = () => {
     };
   }, [network]); //eslint-disable-line
 
-  const login = async (_provider:any, _web3:any) => {
+  const login = async (_provider: any, _web3: any) => {
     let _account = '';
     if (_provider && _provider.selectedAddress) {
       _account = _provider.selectedAddress;
-      
+
     }
     if (!_account && _provider && _provider.accounts) {
       _account = _provider.accounts[0];
@@ -81,7 +81,7 @@ const useCustomState = () => {
       _account = _provider.address;
     }
     const message = "Welcome to POAP Lens";
-    await _web3.eth.personal.sign(message, _account,'',   async (err:any,res:any) => {
+    await _web3.eth.personal.sign(message, _account, '', async (err: any, res: any) => {
       if (res) {
         const _accessToken = await loginWallet(message, _account, res);
         if (_accessToken) {
@@ -89,7 +89,7 @@ const useCustomState = () => {
         }
         setAccount(_account);
         setIsConnected(true);
-        const response = await ensResolve();
+        const response = await ensResolve(_account);
         if (response.data && response.data.ens) {
           setEns(response.data.ens);
         }
@@ -118,22 +118,22 @@ const useCustomState = () => {
     try {
       // @ts-ignore
       web3?.currentProvider.close();
-    } catch (e) {}
+    } catch (e) { }
     web3Modal.clearCachedProvider();
     setWeb3(null);
     setIsConnected(false);
     setAccount('');
   };
 
-  const ensResolve = async () => {
-    return await getEns(account)
+  const ensResolve = async (_account: string) => {
+    return await getEns(_account)
   }
 
   // FCM notifications
   const saveToken = (_token: string) => {
     if (_token !== '') {
       setToken(_token);
-      if (typeof window !== "undefined") { 
+      if (typeof window !== "undefined") {
         localStorage.setItem('fcm-token', _token);
       }
     }

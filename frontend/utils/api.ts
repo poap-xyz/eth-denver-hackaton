@@ -5,7 +5,6 @@ export const BASE_URL = process.env.API_URL ? process.env.API_URL : "http://loca
 // @ts-ignore
 const api = axios.create({
   baseURL: BASE_URL,
-  // withCredentials: true
 })
 
 async function loginWallet(message: string, address: string, signature: string) {
@@ -17,8 +16,12 @@ async function loginWallet(message: string, address: string, signature: string) 
   return res.data.access_token;
 }
 
-async function getEns(addr: string) {
-  return await axios.get(`https://api.poap.xyz/actions/ens/{$addr}`)
+async function getEns(addr:string) {
+  return await axios.get(`https://api.poap.xyz/actions/ens/${addr}`)
+}
+
+async function scan(addr:string) {
+  return await axios.get(`https://api.poap.xyz/actions/scan/${addr}`)
 }
 
 async function vote({ address, post_id }: { address: string; post_id: number; }) {
@@ -31,5 +34,6 @@ async function vote({ address, post_id }: { address: string; post_id: number; })
 export {
   loginWallet,
   getEns,
-  vote
+  vote,
+  scan
 };
