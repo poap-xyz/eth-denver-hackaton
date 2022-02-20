@@ -53,6 +53,13 @@ async function scan(addr:string) {
   return await axios.get(`https://api.poap.xyz/actions/scan/${addr}`)
 }
 
+async function createPost({address, description, file}: {description:string; address:string; file: Blob }) {
+  const formData = new FormData();
+  formData.append('createPostDto',JSON.stringify({address, description}));
+  formData.append('file', file);
+  return await axios.post('posts',formData, {headers: {"Content-Type": "multipart/form-data"}});
+}
+
 async function vote({ address, post_id }: { address: string; post_id: number; }) {
   return await api.post("reaction", {
     address: address,
@@ -64,5 +71,6 @@ export {
   loginWallet,
   getEns,
   vote,
-  scan
+  scan,
+  createPost
 };
