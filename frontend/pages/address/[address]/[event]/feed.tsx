@@ -145,7 +145,7 @@ const Feed: NextPage = () => {
         {
           feed.map( comment => {
             return (
-              <div className={styles.itemFeed}>
+              <div key={`comment_${comment.id}`} className={styles.itemFeed}>
                 <div className={styles.cardFeed}>
                   <div className={styles.header}>
                     <div className={styles.address}>
