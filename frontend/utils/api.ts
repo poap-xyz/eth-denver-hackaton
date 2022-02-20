@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const BASE_URL = process.env.API_URL ? process.env.API_URL : "http://localhost:8080";
+export const BASE_URL = "https://api-moments.poap-email.com/";
 
 const JWT_SESSION_STORAGE_KEY = 'JWT_SESSION_STORAGE_KEY';
 

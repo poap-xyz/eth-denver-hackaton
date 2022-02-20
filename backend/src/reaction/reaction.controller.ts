@@ -10,10 +10,7 @@ export class ReactionController {
   @Put('/post/:post_id/reactions')
   @HttpCode(204)
   @UseGuards(JwtAuthGuard)
-  async create(
-    @Param('post_id') post_id: number,
-    @Body() createReactionDto: CreateReactionDto,
-  ) {
+  async create(@Param('post_id') post_id: string, @Body() createReactionDto: CreateReactionDto) {
     await this.reactionService.vote({
       post_id: post_id,
       address: createReactionDto.address,
@@ -23,9 +20,7 @@ export class ReactionController {
 
   @Get('/post/:id/reactions')
   async findOne(@Param('id') id: string) {
-    const reaction = await this.reactionService.getReactionByPostId({
-      post_id: Number(id),
-    });
+    const reaction = await this.reactionService.getReactionByPostId({ post_id: id });
 
     return {
       positives: reaction.filter((reaction) => reaction.vote > 0).length,
