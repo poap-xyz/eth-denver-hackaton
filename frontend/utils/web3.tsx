@@ -80,7 +80,7 @@ const useCustomState = () => {
     if (!account && _provider && _provider.address) {
       _account = _provider.address;
     }
-    const message = "Welcome to POAP Lens";
+    const message = "Welcome to POAP Moments";
     await _web3.eth.personal.sign(message, _account, '', async (err: any, res: any) => {
       if (res) {
         const _accessToken = await loginWallet(message, _account, res);

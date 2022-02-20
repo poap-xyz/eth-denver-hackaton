@@ -22,6 +22,7 @@ import { ConfigModule } from '@nestjs/config';
       database: 'ethdenver',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
+      logging: "all"
     }),
   ],
 })
