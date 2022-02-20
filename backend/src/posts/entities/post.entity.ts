@@ -18,7 +18,6 @@ export class Post {
   description: string;
   @Column({ name: 'account_id', nullable: false }) //TODO ADD Account entity relationship @ManyToOne(() => Account, account => account.address)
   accountId: string;
-  @OneToMany(() => Reaction, (reaction) => reaction.post_id)
   reactions: Reaction[];
   @Column({ nullable: false, name: 'event_id' })
   eventId: number;
