@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "color": "^4.2.1",
+    "mersenne-twister": "^1.1.0"
+  }
+}

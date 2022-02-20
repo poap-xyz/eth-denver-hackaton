@@ -1,12 +1,11 @@
 import type { NextPage } from 'next'
 import styles from "../styles/Home.module.scss";
+import Searchbar from './components/Searchbar';
 
 const Home: NextPage = () => {
   return (
     <>
-      <h1 className={styles.title}>
-        Welcome to <a href="https://nextjs.org">Next.js!</a>
-      </h1>
+            <Searchbar/>
     </>
   );
 };
