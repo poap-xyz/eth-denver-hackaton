@@ -13,8 +13,9 @@ async function getSignature() {
   return res.data.token;
 }
 
-async function loginWallet(message:string, address: string) {
-  /* const res = await api.post( "account/token/", {
+async function loginWallet(message: string, address: string) {
+  /*
+  const res = await api.post("account/token/", {
     "signature": message,
     "address": address
   });
@@ -27,8 +28,16 @@ async function getEns(addr:string) {
   return await axios.get('https://api.poap.xyz/actions/ens/0x8C775808Fffbb99208452698bc619Cf9D07d8b2e')
 }
 
+async function vote({ address, post_id }: { address: string; post_id: number; }) {
+  return await api.post("reaction", {
+    address: address,
+    post_id: post_id
+  })
+}
+
 export {
   getSignature,
   loginWallet,
-  getEns
+  getEns,
+  vote
 };

@@ -1,13 +1,16 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
-import {StateProvider} from './utils/web3'
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
+import { StateProvider } from "./utils/web3";
+import Layout from "../components/Layout";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <StateProvider>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </StateProvider>
   );
 }
 
-export default MyApp
+export default MyApp;
