@@ -10,9 +10,7 @@ interface EventCardProps {
 }
 
 const EventCard = ( { address, event }: EventCardProps) => {
-  console.log(event);
   if (!event) return null;
-
   return (
     <Link href={`/address/${address}/${event.id}/feed`}>
       <div className={styles.event}>
