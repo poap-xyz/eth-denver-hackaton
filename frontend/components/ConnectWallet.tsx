@@ -1,5 +1,5 @@
 import React from "react";
-import { useStateContext } from "../utils/web3";
+import { useStateContext } from "../pages/utils/web3";
 
 function ConnectWallet() {
   const { connectWallet } = useStateContext();
