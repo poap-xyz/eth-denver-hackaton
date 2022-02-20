@@ -14,7 +14,7 @@ import styles from "../styles/EventCard.module.scss";
 
 interface EventCardProps {
   event: Event;
-  address: String;
+  address: any;
 }
 
 const EventCard = ( { address, event }: EventCardProps) => {
