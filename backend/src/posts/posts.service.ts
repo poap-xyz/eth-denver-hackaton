@@ -6,8 +6,8 @@ import { PostRepository } from './posts.repository';
 @Injectable()
 export class PostsService {
   constructor(private postRepository: PostRepository) {}
-  create(createPostDto: CreatePostDto) {
-    return 'This action adds a new post';
+  create(createPostDto: CreatePostDto, urlIPFS: string) {
+    return this.postRepository.save({ ...createPostDto, urlIPFS });
   }
 
   findAll() {

@@ -4,9 +4,11 @@ import { AccountsModule } from './accounts/accounts.module';
 import { EventsModule } from './events/events.module';
 import { PostsModule } from './posts/posts.module';
 import { ReactionModule } from './reaction/reaction.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({ envFilePath: '.env' }),
     EventsModule,
     AccountsModule,
     PostsModule,
