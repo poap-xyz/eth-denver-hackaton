@@ -1,6 +1,7 @@
 .uiSearchbar {
   &Wrap {
     position: relative;
+    width: 50%;
     border-radius: 60px;
     background-color: var(--searchbar-translucent-color);
   }
@@ -24,7 +25,8 @@
 
   &Input {
     display: block;
-    width: 100%;
+    width: fit-content;
+    width: 99%;
     border-radius: 60px;
     background-color: transparent;
     font-size: 18px;
@@ -51,7 +53,7 @@
   }
 
   &Cta {
-    padding-top: 24px;
+    padding-top: 0px;
   }
 
   &Button {

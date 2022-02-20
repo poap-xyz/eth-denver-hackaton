@@ -5,3 +5,66 @@
 .logo {
   margin: 0 0.5rem;
 }
+
+.uiWalletHeader {
+  padding: 24px;
+  background-color: var(--primary-translucent-color);
+  transition: background-color .3s ease;
+  border-radius: 24px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  position: sticky;
+  z-index: 10;
+  top: -48px;
+
+  &Wallet {
+    transition: transform .3s ease;
+    transform: scale(1) translate3d(0,0,0);
+    transform-origin: center left;
+    z-index: 1;
+    position: relative;
+  }
+
+  p {
+    font-size: 14px;
+    padding-top: 24px;
+    font-weight: 400;
+    opacity: 1;
+    transition: opacity .6s .2s ease;
+    backface-visibility: hidden;
+  }
+
+  .uiButtonClose {
+    display: none;
+  }
+
+  &Range {
+    height: 22px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary-text-color);
+    margin-bottom: -22px;
+    transform: translate3d(0, 60px, 0);
+    transition: transform .4s ease;
+    backface-visibility: hidden;
+    pointer-events: none;
+  }
+
+  &.sticky {
+    background-color: var(--opaque-translucent-color);
+    backface-visibility: hidden;
+
+    .uiWalletHeaderWallet {
+      transform: scale(0.7) translate3d(0,48px,0);
+    }
+
+    p {
+      transition: opacity .2s ease;
+      opacity: 0;
+    }
+
+    .uiWalletHeaderRange {
+      transform: translate3d(0,-8px,0);
+    }
+  }
+}

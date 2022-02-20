@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from "react";
 import {useStateContext} from "../utils/web3";
 import Jazzicon from "./Layout/Jazzicon"
+import styles from "../../styles/WalletHeader.module.scss"
 
 
 function WalletDisplay(){
   const { ens, account } = useStateContext();
 
   return (
-    <div className='ui-wallet-display'>
-      <div className="ui-wallet-display-img">
+    <div className={styles.suiWalletDisplay}>
+      <div className={styles.uiWalletDisplayImg}>
       <Jazzicon
           address={account}
           size={account.length}
         />
       </div>
-      <div className='ui-wallet-display-address'>
-        {ens ? ens : `${account.substring(0, 6)}...${account.substring(-4)}`}
+      <div className={styles.uiWalletDisplayAddress}>
+        {ens ? ens : `${account.substr(0, 6)}...${account.substr(-4)}`}
       </div>
     </div>
   )

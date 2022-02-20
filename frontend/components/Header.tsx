@@ -15,7 +15,7 @@ const Header: NextComponentType = ({ children }) => {
           <div className={styles.logo}>
             <Image src={PoapLogo} width={50} />
           </div>
-          <div className="ui-wallet-header-wallet">
+          <div className={styles.uiWalletHeaderWallet}>
             {
               account ? (
                 <WalletDisplay/>
