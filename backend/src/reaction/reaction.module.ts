@@ -8,6 +8,6 @@ import { ReactionService } from './reaction.service';
   imports: [TypeOrmModule.forFeature([Reaction])],
   controllers: [ReactionController],
   providers: [ReactionService],
-  exports: [ReactionService]
+  exports: [ReactionService],
 })
-export class ReactionModule { }
+export class ReactionModule {}

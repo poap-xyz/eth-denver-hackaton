@@ -1,0 +1,46 @@
+.homeBox {
+  border-radius: 24px;
+  background-color: rgba(167, 127, 231, 0.801);
+  padding: 24px;
+  margin-top: 24px;
+  height: 400px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .name {
+    padding: 10px 10px;
+    font-size: 24px;
+    line-height: 32px;
+    text-shadow: 0 0 1px rgb(0 0 0 / 20%);
+    opacity: .9;
+    font-weight: 900;
+  }
+
+  .input {
+    width: 100%;
+    border-radius: 60px;
+    background-color: white;
+    font-size: 18px;
+    font-family: Nunito, sans-serif;
+    font-weight: 600;
+    height: 40px;
+    padding: 16px 16px 16px 48px;
+    border: 0;
+    color: var(--searchbar-text-color);
+    outline: none;
+  }
+
+  .button {
+    background: linear-gradient(132.82deg, #7464E7 1.16%, #FF98AF 95.99%);
+    color: white;
+    border-radius: 56px;
+    border: white;
+    height: 50px;
+    width: 130px;
+    cursor:pointer;
+    font-size: 20px;
+    align-self: center;
+  }
+}
