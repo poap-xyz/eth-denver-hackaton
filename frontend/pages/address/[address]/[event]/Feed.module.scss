@@ -70,10 +70,46 @@
     border: 1px solid #c5c4c4;
     border-radius: 24px;
 
+    .header {
+      display: flex;
+      justify-content: space-between;
+    }
+
     .address {
       margin-bottom: 10px;
       font-weight: 600;
       font-size: 18px;
+    }
+
+    .actions {
+      display: flex;
+
+      svg {
+        height: 20px;
+        cursor: pointer;
+      }
+
+      .counter {
+        margin-top: 7px;
+        margin-right: 5px;
+      }
+
+      .like {
+        display: flex;
+        align-items: center;
+        height: 30px;
+        margin-right: 30px;
+      }
+      .dislike {
+        display: flex;
+        align-items: center;
+        height: 30px;
+        svg {
+          transform: rotateX(180deg);
+          margin-left: 5px;
+          margin-top: 11px;
+        }
+      }
     }
 
     .imageFeed {
