@@ -29,14 +29,12 @@ const Address: NextPage = () => {
   if (!address) return <div>Error with address</div>;
 
   return (
-    <>
-      <div className={styles.grid}>
-        {events.length > 0 &&
-          events.map(({ event }: EventData) => (
-            <EventCard address={address} key={event.id} event={event} />
-          ))}
-      </div>
-    </>
+    <div className={styles.grid}>
+      {events.length > 0 &&
+        events.map(({ event }: EventData) => (
+          <EventCard address={address} key={event.id} event={event} />
+        ))}
+    </div>
   );
 };
 
