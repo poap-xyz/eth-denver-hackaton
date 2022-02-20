@@ -1,3 +1,19 @@
+.uiWalletDisplayImg{
+  margin-right: 10px;
+}
+
+.uiWalletDisplay{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(132.82deg, #7464E7 1.16%, #FF98AF 95.99%);
+  color: white;
+  border-radius: 56px;
+  padding: 10px;
+
+}
+
 .uiWalletHeader {
     padding: 24px;
     background-color: var(--primary-translucent-color);

@@ -1,7 +1,7 @@
 import {createPost} from "../utils/api"
 import React, { useEffect, useState } from 'react'
 
-const CreatePost = ({events, address, eventId}:any) => {
+const CreatePost = ({events, address, event}:any) => {
     const [dataUri, setDataUri] = useState('');
     const [image, setImage] = useState<File | null>(null);
 
@@ -20,7 +20,7 @@ const CreatePost = ({events, address, eventId}:any) => {
             return;
         }
         const file = new Blob([image], {type: image.type})
-        const res = await createPost({address,description,file, eventId: +eventId});
+        const res = await createPost({address,description,file, event: +event});
         console.log(await res.data);
         
         //const result = await res.json()
