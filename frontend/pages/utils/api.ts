@@ -13,12 +13,19 @@ async function getSignature() {
   return res.data.token;
 }
 
-async function loginWallet(message:string, address: string) {
-  const res = await api.post( "account/token/", {
+async function loginWallet(message: string, address: string) {
+  const res = await api.post("account/token/", {
     "signature": message,
     "address": address
   });
   return res.data.access;
+}
+
+async function vote({ address, post_id }: { address: string; post_id: number; }) {
+  return await api.post("reaction", {
+    address: address,
+    post_id: post_id
+  })
 }
 
 export {
