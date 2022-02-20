@@ -1,11 +1,23 @@
 import { Injectable } from '@nestjs/common';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
+import { EventNotFoundError } from './exceptions/eventNotFound.error';
 
 @Injectable()
 export class EventsService {
   create(createEventDto: CreateEventDto) {
-    return 'This action adds a new event';
+    const eventId = createEventDto.eventId;
+    const event = this.findOne(eventId);
+    if (!event) {
+    }
+  }
+
+  private getEventFromAPI(eventId: number) {
+    //TODO implement connection
+    const event = null;
+    if (!event) {
+      throw new EventNotFoundError();
+    }
   }
 
   findAll() {
