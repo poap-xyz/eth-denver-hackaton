@@ -5,7 +5,8 @@ import type { NextPage } from "next";
 import dayjs from "dayjs";
 
 import styles from "./Feed.module.scss";
-import {getEvent, getPostsByEventId} from "../../../../utils/api";
+import {getEvent, getPostsByEventId, reaction} from "../../../../utils/api";
+import { useStateContext } from "../../../../utils/web3";
 import axios from "axios";
 
 type Comment = {
@@ -57,7 +58,7 @@ const Feed: NextPage = () => {
       dislikes: 0,
     },
   ]);
-
+  const {account} = useStateContext();
 
   const router = useRouter();
   const {address, event: eventIdRouter} = router.query;
@@ -113,12 +114,18 @@ const Feed: NextPage = () => {
       setFeed(asd);
   }
 
-  const handleLike = (comment: Comment) => {
-    console.log('Like', comment)
+  const handleLike = async (comment: Comment) => {
+    await reaction(comment.id, 1, account);
+    const aux: any = eventId;
+    setEventId(undefined);
+    setEventId(aux);
   }
 
-  const handleDislike = (comment: Comment) => {
-    console.log('Dislike', comment)
+  const handleDislike = async (comment: Comment) => {
+    await reaction(comment.id, -1, account);
+    const aux: any = eventId;
+    setEventId(undefined);
+    setEventId(aux);
   }
 
   if (!eventInfo) {

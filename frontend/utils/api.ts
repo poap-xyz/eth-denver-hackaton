@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const BASE_URL = "https://api-moments.poap-email.com/";
+export const BASE_URL = "http://localhost:8080/";
 
 const JWT_SESSION_STORAGE_KEY = 'JWT_SESSION_STORAGE_KEY';
 
@@ -58,6 +58,15 @@ async function getPostsByEventId({eventId}: {eventId: any}) {
   return await response.data;
 }
 
+async function reaction(postId: any, vote: number, address: any) {
+  const bearer = 'Bearer ' + sessionStorage.getItem(JWT_SESSION_STORAGE_KEY)
+  const response = await api.put(`post/${postId}/reactions`, {
+    vote,
+    address
+  }, {headers: {"Authorization": bearer}});
+  return await response.data;
+}
+
 export {
   loginWallet,
   getEns,
@@ -66,4 +75,5 @@ export {
   createPost,
   getEvent,
   getPostsByEventId,
+  reaction
 };
