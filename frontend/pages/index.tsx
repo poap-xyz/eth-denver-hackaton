@@ -4,9 +4,23 @@ import Searchbar from './components/Searchbar';
 
 const Home: NextPage = () => {
   return (
-    <>
-            <Searchbar/>
-    </>
+    <section>
+      <div className={styles.container}>
+        <div className={styles.homeBox}>
+          <div>
+            <h1>
+              Proof<br />
+              Of<br />
+              Attendance<br />
+              Protocol
+            </h1>
+          </div>
+          <div>
+            <Searchbar />
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
