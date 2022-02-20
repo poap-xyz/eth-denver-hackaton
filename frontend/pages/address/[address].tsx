@@ -6,7 +6,6 @@ import EventCard from "../../components/EventCard";
 import { EventData } from "../../types/types";
 
 import styles from "../../styles/Event.module.scss";
-import { waitUntilSymbol } from "next/dist/server/web/spec-compliant/fetch-event";
 import { scan } from "../../utils/api";
 
 const Address: NextPage = () => {
