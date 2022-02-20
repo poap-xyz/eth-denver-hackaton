@@ -19,7 +19,7 @@ const shapeCount = 3;
 
 
 function Jazzicon({ address, size }) {
-  const seed = parseInt(address.slice(2, 10), 16);
+  const seed = address ? parseInt(address.slice(2, 10), 16) : 80;
 
   const generator = new MersenneTwister(seed);
   const amount = generator.random() * 30 - wobble / 2;
