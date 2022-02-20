@@ -1,7 +1,7 @@
 .page {
   display: grid;
   flex-wrap: wrap;
-  width: 100%;
+  width: 90%;
   grid-template-columns: 1fr;
   align-items: start;
 }
@@ -81,8 +81,10 @@
 
     .header {
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
-      height: 45px;
+      height: 70px;
+      width: 100%;
     }
 
     .address {
@@ -92,6 +94,7 @@
     }
 
     .actions {
+      align-self: end;
       display: flex;
 
       svg {
@@ -138,7 +141,7 @@
 @media (min-width: 1024px) {
 
   .page {
-    width: 900px;
+    width: 90%;
     grid-template-columns: 350px 1fr;
   }
   .event {

@@ -8,10 +8,8 @@ const Create = () => {
   const { address, event: eventId } = router.query;
   
   return (
-    <>
-        <CreatePost eventId={eventId} address={account}/>
-    </>
-    );
+    <CreatePost eventId={eventId} address={account}/>
+  );
 }
 
 export default Create;
