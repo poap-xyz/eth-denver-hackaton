@@ -222,12 +222,12 @@
   text-align: center;
   background-color: rgba(167, 127, 231, 0.801);
   color: #fff;
-  max-width: 495px;
+  max-width: 400px;
   min-height: 633px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+  cursor:pointer;
 
   .image {
     width: 80%;

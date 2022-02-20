@@ -13,8 +13,6 @@ const Address: NextPage = () => {
   const router = useRouter();
   const { address } = router.query;
 
-  console.log(address);
-
   useEffect(() => {
     if (address) {
       getEvents(address);
@@ -22,9 +20,7 @@ const Address: NextPage = () => {
   }, [address]);
 
   const getEvents = async (address:any) => {
-    console.log(address);
     const res = await scan(address);
-    console.log(res);
     if (res.data){
       setEvents(res.data);
     }
