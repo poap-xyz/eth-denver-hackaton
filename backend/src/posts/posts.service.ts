@@ -1,4 +1,4 @@
-import { Inject, Injectable, NotFoundException } from "@nestjs/common";
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { CreatePostDto } from './dto/create-post.dto';
 import { PostRepository } from './posts.repository';
 import { StorageService } from '../shared/storage/storage.service';
@@ -23,9 +23,9 @@ export class PostsService {
     const urlIPFS = await this.storageService.store(ipfs);
     return await this.postRepository.save({
       address: createPostDto.address,
-      description: createPostDto.address,
-      event: eventId,
-      account: createPostDto.address,
+      description: createPostDto.description,
+      eventId,
+      accountId: createPostDto.address,
       urlIPFS,
     });
   }

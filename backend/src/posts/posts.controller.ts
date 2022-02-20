@@ -4,14 +4,16 @@ import {
   Post,
   Body,
   UseInterceptors,
-  UploadedFile, Param, NotFoundException
-} from "@nestjs/common";
+  UploadedFile,
+  Param,
+  NotFoundException,
+} from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { StoreDataDto } from '../shared/storage/dto/store-data.dto';
-import { EventsService } from "../events/events.service";
-import { GetPostByIdDto } from "./dto/get-post-by-id.dto";
+import { EventsService } from '../events/events.service';
+import { GetPostByIdDto } from './dto/get-post-by-id.dto';
 
 @Controller('posts')
 export class PostsController {
