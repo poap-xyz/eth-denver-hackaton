@@ -5,7 +5,7 @@ import Web3Modal from 'web3modal';
 // @ts-ignore
 import WalletConnectProvider from '@walletconnect/web3-provider';
 
-import { getSignature, loginWallet } from './api';
+import { getEns, loginWallet } from './api';
 
 const useCustomState = () => {
   let _token;
@@ -39,7 +39,7 @@ const useCustomState = () => {
   const [web3, setWeb3] = useState<Web3 | null>(null);
   const [account, setAccount] = useState<string>('');
   const [accessToken, setAccessToken] = useState<string>('');
-
+  const [ens, setEns] = useState<string>();
   const [network, setNetwork] = useState<number>(0);
   // @ts-ignore
   const [, setProvider] = useState<any>(null);
@@ -80,15 +80,19 @@ const useCustomState = () => {
     if (!account && _provider && _provider.address) {
       _account = _provider.address;
     }
-    const message = await getSignature();
+    const message = "Welcome to POAP Lens";
     await _web3.eth.personal.sign(message, _account,'',   async (err:any,res:any) => {
       if (res) {
         const _accessToken = await loginWallet(res, _account);
         if (_accessToken) {
-          setAccessToken(_accessToken)
+          //setAccessToken(_accessToken)
         }
         setAccount(_account);
         setIsConnected(true);
+        const response = await ensResolve();
+        if (response.data && response.data.ens) {
+          setEns(response.data.ens);
+        }
       }
     });
   }
@@ -121,6 +125,10 @@ const useCustomState = () => {
     setAccount('');
   };
 
+  const ensResolve = async () => {
+    return await getEns(account)
+  }
+
   // FCM notifications
   const saveToken = (_token: string) => {
     if (_token !== '') {
@@ -139,6 +147,7 @@ const useCustomState = () => {
     account,
     token,
     saveToken,
+    ens,
     accessToken
   };
 };

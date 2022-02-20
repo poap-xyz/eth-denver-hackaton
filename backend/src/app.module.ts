@@ -1,16 +1,18 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { EventsModule } from './events/events.module';
-import { AccountsModule } from './accounts/accounts.module';
-import { PostsModule } from './posts/posts.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AccountsModule } from './accounts/accounts.module';
+import { EventsModule } from './events/events.module';
+import { PostsModule } from './posts/posts.module';
+import { ReactionModule } from './reaction/reaction.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({ envFilePath: '.env' }),
     EventsModule,
     AccountsModule,
     PostsModule,
+    ReactionModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: '127.0.0.1',
@@ -22,7 +24,5 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       synchronize: true,
     }),
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {};
