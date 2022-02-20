@@ -13,4 +13,6 @@ export class Post {
   accountId: string;
   @OneToMany(() => Reaction, (reaction) => reaction.post)
   reactions: Reaction[]; //TODO ADD Relations relationship
+  @Column({ nullable: false, name: 'event_id' })
+  eventId: number;
 }
