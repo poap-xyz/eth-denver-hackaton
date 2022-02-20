@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Reaction } from './entities/reaction.entity';
+import { Reaction, VOTE } from './entities/reaction.entity';
 
 @Injectable()
 export class ReactionService {
@@ -10,7 +10,15 @@ export class ReactionService {
     private reactionRepository: Repository<Reaction>,
   ) {}
 
-  async vote({ post_id, address }: { post_id: number; address: string }) {
+  async vote({
+    post_id,
+    address,
+    vote,
+  }: {
+    post_id: number;
+    address: string;
+    vote?: VOTE;
+  }) {
     const reaction = await this.reactionRepository.findOne({
       post_id: post_id,
       address: address,
@@ -30,16 +38,12 @@ export class ReactionService {
       await this.reactionRepository.save({
         post_id: post_id,
         address: address,
-        vote: 1,
+        vote: vote || VOTE.POSITIVE,
       });
     }
   }
 
-  findAll() {
-    return this.reactionRepository.find();
-  }
-
-  findOne(id: number) {
-    return this.reactionRepository.findOne(id);
+  async getReactionByPostId({ post_id }: { post_id: number }) {
+    return await this.reactionRepository.find({ post_id: post_id });
   }
 }

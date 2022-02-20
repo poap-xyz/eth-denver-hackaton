@@ -8,7 +8,7 @@ function ConnectWallet() {
       <div className="relative flex flex-row items-center justify-between overflow-hidden nonconformistducks-bg h-full w-full rounded-3xl">
         <div className="flex flex-col items-center h-full w-full justify-center">
           <button onClick={connectWallet} className="h-1/4 md:h-2/6 mb-3">
-            connect wallet
+            Login
           </button>
         </div>
       </div>

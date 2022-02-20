@@ -14,3 +14,49 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.navbar{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-div{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+.search-form{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+:root {
+  --home-background-image: url('/home-bg.png');
+  --primary-text-color: #473D6B;
+  --secondary-text-color: #655E94;
+  --primary-brand-color: #7465E6;
+
+  --primary-translucent-color: rgba(255,255,255,.4);
+  --secondary-translucent-color: rgba(255,255,255,.2);
+  --overlay-translucent-color: rgba(32,37,43,.2);
+  --opaque-translucent-color: rgba(255,255,255,.94);
+
+  --button-gradient: linear-gradient(90deg, #B4AEFF 0%, #88A9FF 100%);
+
+  --searchbar-translucent-color: rgba(255,255,255,.9);
+  --searchbar-text-color: #655E94;
+  --searchbar-button-gradient: linear-gradient(80.91deg, #EFA8C6 0%, #DCC3F0 100%);
+  --searchbar-button-text-color: #EA90B9;
+
+  --share-link-input-background: #FAFAFA;
+  /* --svg-path-color: #655E94; */
+  --svg-path-color: #555
+}
