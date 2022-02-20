@@ -5,7 +5,7 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Unique,
-  UpdateDateColumn,
+  UpdateDateColumn
 } from 'typeorm';
 export enum VOTE {
   POSITIVE = 1,
@@ -21,7 +21,7 @@ export class Reaction {
   address: string;
 
   @Column()
-  post_id: number;
+  post_id: string;
 
   @Column()
   @IsOptional()
