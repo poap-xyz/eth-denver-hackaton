@@ -13,7 +13,7 @@ const Header: NextComponentType = ({ children }) => {
     <header className={styles.header}>
       <div className="navbar">
           <div className={styles.logo}>
-            <Image src={PoapLogo} width={50} />
+            <Image src={PoapLogo} width={100} />
           </div>
           <div className={styles.uiWalletHeaderWallet}>
             {

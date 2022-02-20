@@ -7,6 +7,7 @@ import {
   UploadedFile,
   Param,
   NotFoundException,
+  UseGuards,
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
@@ -14,6 +15,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { StoreDataDto } from '../shared/storage/dto/store-data.dto';
 import { EventsService } from '../events/events.service';
 import { GetPostByIdDto } from './dto/get-post-by-id.dto';
+import { JwtAuthGuard } from '../accounts/auth-strategies/jwt-auth.guard';
 
 @Controller('posts')
 export class PostsController {
@@ -23,6 +25,7 @@ export class PostsController {
   ) {}
 
   @Post()
+  @UseGuards(JwtAuthGuard)
   @UseInterceptors(FileInterceptor('file'))
   create(
     @Body() createPostDto: CreatePostDto,
