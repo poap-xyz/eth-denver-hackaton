@@ -1,8 +1,10 @@
+@import '../assets/font/stylesheet.css';
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Nunito, sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 a {
@@ -12,6 +14,7 @@ a {
 
 * {
   box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
 }
 
 .navbar{
@@ -38,12 +41,13 @@ a {
 }
 
 :root {
-  --home-background-image: url('/home-bg.png');
+  --home-center-image: url('/home-bg.png');
+  --home-background-image: url('/background.jpg');
   --primary-text-color: #473D6B;
   --secondary-text-color: #655E94;
   --primary-brand-color: #7465E6;
 
-  --primary-translucent-color: rgba(255,255,255,.4);
+  --primary-translucent-color: rgba(255, 255, 255, 0.6);
   --secondary-translucent-color: rgba(255,255,255,.2);
   --overlay-translucent-color: rgba(32,37,43,.2);
   --opaque-translucent-color: rgba(255,255,255,.94);

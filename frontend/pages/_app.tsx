@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+import "../styles/globals.scss";
 import type { AppProps } from "next/app";
 import { StateProvider } from "../utils/web3";
 import Layout from "../components/Layout";
