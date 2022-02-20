@@ -9,10 +9,8 @@ const Home: NextPage = () => {
         <div className={styles.homeBox}>
           <div>
             <h1>
-              Proof<br />
-              Of<br />
-              Attendance<br />
-              Protocol
+              POAP<br />
+              Moments<br />
             </h1>
           </div>
           <div>

@@ -3,6 +3,8 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-image: var(--home-background-image);
+  background-size: cover;
 }
 
 .main {
