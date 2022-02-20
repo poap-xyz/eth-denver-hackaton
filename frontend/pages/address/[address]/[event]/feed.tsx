@@ -4,7 +4,6 @@ import Link from 'next/link'
 import type { NextPage } from "next";
 
 import styles from "./Feed.module.scss";
-import internal from "stream";
 
 type Comment = {
   id: string 
