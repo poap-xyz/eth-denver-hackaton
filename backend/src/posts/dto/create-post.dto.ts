@@ -1,4 +1,9 @@
-import { IsEthereumAddress, IsPositive, IsString } from 'class-validator';
+import {
+  IsEthereumAddress,
+  IsMimeType,
+  IsPositive,
+  IsString,
+} from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class CreatePostDto {
@@ -7,4 +12,6 @@ export class CreatePostDto {
   eventId: number;
   @IsString()
   description: string;
+  @IsMimeType()
+  type: string;
 }

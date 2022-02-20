@@ -21,4 +21,6 @@ export class Post {
   reactions: Reaction[];
   @Column({ nullable: false, name: 'event_id' })
   eventId: number;
+  @Column({ nullable: false, name: 'type' })
+  type: string;
 }

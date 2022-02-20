@@ -27,10 +27,10 @@ const CreatePost = ({eventId, address}:any) => {
         }
         setDisable(true);
         const file = new Blob([image], {type: image.type})
-        const res = await createPost({address,description,file, eventId: +eventId});
+        const res = await createPost({address,description,file, eventId: +eventId, type: image.type});
         router.back()
       }
-    
+
       return (
         <form onSubmit={newPost} className={styles.homeBox}>
           <label htmlFor="description" className={styles.name}>Description</label>

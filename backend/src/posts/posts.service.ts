@@ -8,6 +8,7 @@ import { EventsService } from '../events/events.service';
 import { ReactionService } from '../reaction/reaction.service';
 import { User } from '../accounts/entities/user.entity';
 import {Event} from "../events/entities/event.entity";
+import {ENSResolver} from "../shared/ens_resolver";
 
 @Injectable()
 export class PostsService {
@@ -31,6 +32,7 @@ export class PostsService {
       eventId,
       accountId: user.address,
       urlIPFS,
+      type: createPostDto.type,
     });
   }
 
@@ -54,6 +56,10 @@ export class PostsService {
       post.reactions = await this.reactionsService.getReactionByPostId({
         post_id: post._id,
       });
+      const ens = await ENSResolver.resolve({ addresses: [post.accountId] });
+
+      post.accountId =
+        ens.length > 0 && ens[0].valid ? ens[0].ens : post.accountId;
     }
     return posts;
   }
