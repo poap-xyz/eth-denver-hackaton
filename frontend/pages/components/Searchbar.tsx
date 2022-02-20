@@ -56,7 +56,7 @@ const Searchbar: NextComponentType = () => {
       </div>
       <div className={styles.cta}>
         <button type="submit" className={styles.submit}>
-          <span>search</span>
+          <span>Search</span>
         </button>
       </div>
     </form>
