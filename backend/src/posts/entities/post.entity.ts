@@ -1,5 +1,4 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Reaction } from '../../reaction/entities/reaction.entity';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Post {
