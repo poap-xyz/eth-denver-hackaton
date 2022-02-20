@@ -1,6 +1,9 @@
 import { IsOptional } from "class-validator";
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, Unique, UpdateDateColumn } from "typeorm";
-
+export enum VOTE {
+    POSITIVE = 1,
+    NEGATIVE = -1
+}
 @Entity()
 @Unique(['post_id', 'address'])
 export class Reaction {

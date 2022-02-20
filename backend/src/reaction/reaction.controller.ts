@@ -11,7 +11,8 @@ export class ReactionController {
   async create(@Body() createReactionDto: CreateReactionDto) {
     await this.reactionService.vote({
       post_id: createReactionDto.post_id,
-      address: createReactionDto.address
+      address: createReactionDto.address,
+      vote: createReactionDto.vote
     })
   }
 
@@ -21,8 +22,13 @@ export class ReactionController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.reactionService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    const reaction = await this.reactionService.getReactionByPostId({ post_id: Number(id) });
+
+    return {
+      positives: reaction.filter(reaction => reaction.vote > 0).length,
+      negatives: reaction.filter(reaction => reaction.vote < 0).length
+    }
   }
 
 }
