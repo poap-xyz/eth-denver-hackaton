@@ -8,6 +8,8 @@ import {
   Param,
   NotFoundException,
   UseGuards,
+  Request,
+  BadRequestException,
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
@@ -27,17 +29,27 @@ export class PostsController {
   @Post()
   @UseGuards(JwtAuthGuard)
   @UseInterceptors(FileInterceptor('file'))
-  create(
+  async create(
+    @Request() req,
     @Body() createPostDto: CreatePostDto,
     @UploadedFile() file: Express.Multer.File,
   ) {
+    const user = req.user;
+    const hasAddress = await this.eventsService.hasAddress(
+      user.address,
+      createPostDto.eventId,
+    );
+
+    if (!hasAddress) {
+      throw new BadRequestException('ADDRESS_DOES_NOT_HAVE_TOKEN_FOR_EVENT');
+    }
     const ipfs: StoreDataDto = {
-      name: createPostDto.address,
+      name: user.address,
       description: createPostDto.description,
       filename: file.originalname,
       buffer: file.buffer,
     };
-    return this.postsService.create(createPostDto, ipfs);
+    return this.postsService.create(createPostDto, ipfs, user);
   }
 
   @Get('/event/:eventId/')

@@ -6,6 +6,8 @@ import { StoreDataDto } from '../shared/storage/dto/store-data.dto';
 import { Post } from './entities/post.entity';
 import { EventsService } from '../events/events.service';
 import { ReactionService } from '../reaction/reaction.service';
+import { User } from '../accounts/entities/user.entity';
+import {Event} from "../events/entities/event.entity";
 
 @Injectable()
 export class PostsService {
@@ -16,7 +18,7 @@ export class PostsService {
     private readonly reactionsService: ReactionService,
   ) {}
 
-  async create(createPostDto: CreatePostDto, ipfs: StoreDataDto) {
+  async create(createPostDto: CreatePostDto, ipfs: StoreDataDto, user: User) {
     const eventId = createPostDto.eventId;
     const event = this.eventService.findOne(eventId);
     if (!event) {
@@ -24,12 +26,21 @@ export class PostsService {
     }
     const urlIPFS = await this.storageService.store(ipfs);
     return await this.postRepository.save({
-      address: createPostDto.address,
+      address: user.address,
       description: createPostDto.description,
       eventId,
-      accountId: createPostDto.address,
+      accountId: user.address,
       urlIPFS,
     });
+  }
+
+  async findOne(id: string): Promise<Post | null> {
+    const post = await this.postRepository.findOne(id);
+    if (!post) {
+      throw new NotFoundException();
+    }
+    //event.posts = await this.postsService.findAllByEventId(id);
+    return post;
   }
 
   async findAllByEventId(eventId: number): Promise<Post[]> {
