@@ -8,12 +8,12 @@ function WalletDisplay(){
   const { ens, account } = useStateContext();
 
   return (
-    <div className={styles.suiWalletDisplay}>
+    <div className={styles.uiWalletDisplay}>
       <div className={styles.uiWalletDisplayImg}>
-      <Jazzicon
-          address={account}
-          size={account.length}
-        />
+        <Jazzicon
+            address={account}
+            size={account.length}
+          />
       </div>
       <div className={styles.uiWalletDisplayAddress}>
         {ens ? ens : `${account.substr(0, 6)}...${account.substr(-4)}`}

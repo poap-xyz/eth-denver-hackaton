@@ -31,7 +31,7 @@ async function scan(addr:string) {
   return await axios.get(`https://api.poap.xyz/actions/scan/${addr}`)
 }
 
-async function createPost({address, description,eventId, file}: {description:string; address:string; eventId: number; file: Blob }) {
+async function createPost({address, description, eventId, file}: {description:string; address:string; eventId: number; file: Blob }) {
   const formData = new FormData();
   formData.append('address', address);
   formData.append('eventId', eventId.toString());
